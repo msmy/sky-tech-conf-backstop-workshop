@@ -1,0 +1,152 @@
+$tablet: 768px !default;
+$desktop: 1120px !default;
+$maxMobileWidth: $tablet - 1 !default;
+$maxTabletWidth: $desktop - 1 !default;
+
+@mixin mobile-only {
+  @media screen and (max-width: $maxMobileWidth) {
+    @content;
+  }
+}
+@mixin tablet-only {
+  @media screen and (min-width: $tablet) and (max-width:$maxTabletWidth) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}
+
+body {
+  background: #001421;
+  font-family: Helvetica;
+}
+
+.top-bar {
+  width: 100%;
+  background: #223153;
+  height: 62px;
+  margin: 0;
+  padding: 5px;
+
+  &__menu-icon {
+    display: none;
+    @media screen and (max-width: $maxMobileWidth) {
+      display: block;
+      margin: 17px;
+      float: left;
+    }
+  }
+
+  &__logo {
+    margin: 0 auto;
+    width: 105px;
+    svg {
+      width: 100%;
+    }
+  }
+}
+
+.nav {
+  color: #fff;
+  background: #011e30;
+  height: 55px;
+  width: 100%;
+
+  @media screen and (max-width: $maxMobileWidth) {
+  display: none;      
+  }
+
+  &__menu {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+
+    div {
+      display: inline-block;
+      padding: 15px 10px;
+      flex: 1;
+      cursor: pointer;
+      
+      &:hover {
+        color: red;
+      }
+    }
+  }
+}
+
+.content {
+  color: #fff;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pass-card {
+  display: inline-block;
+  background: #223153;
+  width: 45%;
+  border-radius: 5px;
+  margin: 5px;
+
+  @media screen and (max-width: $maxMobileWidth) {
+    width: 80%;
+  }
+
+  &__content {
+    padding: 25px
+  }
+
+  &__logo {
+    width: 200px;
+    margin: 0 auto;
+      img {
+        width: 100%;
+      }
+  }
+
+  &__cta {
+    background: green;
+    max-width: 225px;
+    height: 40px;
+    border-radius: 5px;
+    line-height: 40px;
+    margin: 25px auto 10px;
+    &--ents {
+      background: #f0a000;
+      &:hover {
+        background: #dab66f;
+      }
+    }
+
+    &--cinema {
+      background: #5a0f96;
+      &:hover {
+        background: #7b519c;
+      }
+    }
+
+    &--hayu {
+      background: #ff3d67;
+      &:hover {
+        background: #ff7c99;
+      }
+    }
+
+    &--kids {
+      background: #d11826;
+      &:hover {
+        background: #d86f78;
+      }
+    }
+  }
+}
